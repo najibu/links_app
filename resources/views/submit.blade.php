@@ -7,6 +7,17 @@
       <form action="/submit" method="post">
         {!! csrf_field() !!}
 
+        @if (count($errors) > 0)
+          <div class="alert alert-danger">
+            <strong>Whoops! Something went wrong!</strong>
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
         <div class="form-group">
           <label for="title">Title</label>
           <input type="text" class="form-control" id="title" name="title" placeholder="Title">

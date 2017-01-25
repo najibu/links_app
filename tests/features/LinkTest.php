@@ -33,6 +33,15 @@ class LinkTest extends TestCase
          ->see('The title field is required')
          ->see('The url field is required')
          ->see('The description field is required');
+  }
 
+  public function testSubmitLinksToDb()
+  {
+    $this->visit('/submit')
+         ->type('dotdev', 'title')
+         ->type('https://dotdev.co', 'url')
+         ->type('My description', 'description')
+         ->press('Submit')
+         ->seeInDatabase('links', ['title' => 'dotdev']);
   }
 }
