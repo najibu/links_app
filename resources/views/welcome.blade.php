@@ -90,6 +90,10 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+
+            @foreach ($links as $link)
+                <li>{{ $link->title }}</li>
+            @endforeach
         </div>
     </body>
 </html>
